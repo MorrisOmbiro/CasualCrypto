@@ -1,3 +1,4 @@
+# https://casualcrypto.herokuapp.com/ 
 # What is this? 
 Very simple use of Coinbase API. 
 Chimes when you are below your average price or below 
