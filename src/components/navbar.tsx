@@ -23,7 +23,7 @@ const MainLogo = () => {
   );
 };
 
-const MainNavbar = () => {
+const MainNavbar: React.FC = () => {
   return (
     <Container maxWidth="lg">
       <div>
@@ -34,7 +34,12 @@ const MainNavbar = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav.Link
-              style={{ paddingRight: 30, fontSize: "25px", color: "#FBEDED", fontWeight: "bold" }}
+              style={{
+                paddingRight: 30,
+                fontSize: "25px",
+                color: "#FBEDED",
+                fontWeight: "bold",
+              }}
             >
               about
             </Nav.Link>

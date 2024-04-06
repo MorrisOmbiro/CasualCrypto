@@ -1,3 +1,4 @@
+import React from "react";
 import { Paper } from "@material-ui/core";
 import Image from "react-bootstrap/Image";
 import styled from "styled-components";
@@ -17,16 +18,14 @@ const Wrapper = styled.section`
   height: 100%;
 `;
 
-const ImageInfo = () => {
-  return (
-    <div className="focus" style={wrapperRight}>
-      <Paper elevation={2} style={{borderRadius:"20px"}}>
-        <Wrapper>
-          <Image fluid rounded alt="Happy Crypto" src={happy_crypto} />
-        </Wrapper>
-      </Paper>
-    </div>
-  );
-};
+const ImageInfo: React.FC = () => (
+  <div className="focus" style={wrapperRight}>
+    <Paper elevation={2} style={{ borderRadius: "20px" }}>
+      <Wrapper>
+        <Image fluid rounded alt="Happy Crypto" src={happy_crypto} />
+      </Wrapper>
+    </Paper>
+  </div>
+);
 
 export default ImageInfo;

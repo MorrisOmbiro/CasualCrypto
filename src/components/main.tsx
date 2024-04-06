@@ -1,26 +1,27 @@
 import axios from "axios";
+import React from "react";
 import { useState, useEffect, useRef } from "react";
-import AmountDisplay from "./left_display"
-import CurrentValue from "./current_value_context"; 
-import MainScreen from "./mainscreen"
+import AmountDisplay from "./left_display";
+import CurrentValue from "./current_value_context";
+import MainScreen from "./mainscreen";
 
-const useRefresh = (callback, delay) => {
+const useRefresh = (callback: () => void, delay: number) => {
   const savedCallBack = useRef();
 
   // remember the latest callback
   useEffect(() => {
-    savedCallBack.current = callback;
+    savedCallBack.current = callback as any;
   }, [callback]);
 
   useEffect(() => {
     let id = setInterval(() => {
-      savedCallBack.current();
+      savedCallBack?.current;
     }, delay);
     return () => clearInterval(id);
   }, [delay]);
 };
 
-const Main = () => {
+const Main: React.FC = () => {
   const [data, setData] = useState([]);
   useRefresh(() => {
     axios
@@ -33,10 +34,10 @@ const Main = () => {
 
   return (
     <CurrentValue.Provider value={currPrice}>
-        <MainScreen/>
-        <AmountDisplay />
+      <MainScreen />
+      <AmountDisplay />
     </CurrentValue.Provider>
   );
 };
 
-export default Main; 
+export default Main;

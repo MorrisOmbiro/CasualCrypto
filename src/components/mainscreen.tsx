@@ -31,7 +31,7 @@ const Rights = () => {
   return <div style={btn}>
   </div>;
 };
-const MainScreen = () => {
+const MainScreen: React.FC = () => {
   return (
     <div >
       <Container className="focus">

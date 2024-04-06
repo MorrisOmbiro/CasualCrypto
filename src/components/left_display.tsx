@@ -1,5 +1,6 @@
 import DataInput from "./data_input";
 import DataDisplay from "./display_average";
+import React from "react";
 import { useEffect, useState } from "react";
 import Container from "@material-ui/core/Container";
 import ImageInfo from "./right_display";
@@ -9,12 +10,6 @@ import useSound from "use-sound";
 import success from "./notifications/success.mp3";
 import fail from "./notifications/fail.mp3";
 
-const mainDiv = {
-  display: "flex",
-  flexFlow: "row",
-  flexWrap: "wrap",
-};
-
 const wrapperLeft = {
   marginTop: "40px",
   alignItems: "left",
@@ -22,7 +17,7 @@ const wrapperLeft = {
   maxWidth: "45%",
 };
 
-const AmountDisplay = () => {
+const AmountDisplay: React.FC = () => {
   const [amount, setAmount] = useState(0);
   const currAmt = useContext(CurrentValue);
   const [playSuccess] = useSound(success);
@@ -34,11 +29,11 @@ const AmountDisplay = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("amount", amount);
+    localStorage.setItem("amount", `${amount}`);
   }, [amount]);
 
   useEffect(() => {
-    if (parseInt(currAmt.toString().replace(",", "")) > parseInt(amount)) {
+    if (parseInt(currAmt.toString().replace(",", "")) > parseInt(`${amount}`)) {
       return playSuccess;
     }
     return playFail;
@@ -46,9 +41,22 @@ const AmountDisplay = () => {
 
   return (
     <div>
-      <div style={mainDiv}>
+      <div
+        style={{
+          display: "flex",
+          flexFlow: "row",
+          flexWrap: "wrap",
+        }}
+      >
         <Container maxWidth="lg">
-          <div id="about" style={mainDiv}>
+          <div
+            id="about"
+            style={{
+              display: "flex",
+              flexFlow: "row",
+              flexWrap: "wrap",
+            }}
+          >
             <div style={wrapperLeft}>
               <DataInput setAmount={setAmount} />
               <DataDisplay amount={amount} />

@@ -25,15 +25,26 @@ const SubTitle = styled.h1`
   flex-wrap: wrap;
 `;
 
-const DataInput = ({ setAmount }) => {
-  const handleSubmit = (e) => {
+interface Props {
+  setAmount: (e: any) => void;
+}
+
+const DataInput: React.FC<Props> = ({ setAmount }) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
   };
 
   return (
     <div className="focus">
       <form onSubmit={handleSubmit} autoComplete="off">
-        <Paper elevation={2} style={{ padding: "20px", borderRadius: "20px", background: "#FBEDED" }}>
+        <Paper
+          elevation={2}
+          style={{
+            padding: "20px",
+            borderRadius: "20px",
+            background: "#FBEDED",
+          }}
+        >
           <SubTitle>Input your Avg. buying price for BTC</SubTitle>
           <div style={{ paddingTop: "40px" }}>
             <ThemeProvider theme={theme}>
