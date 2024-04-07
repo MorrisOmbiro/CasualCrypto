@@ -1,13 +1,12 @@
 import React from "react";
-import MainNavbar from "./components/navbar";
 import Main from "./components/main";
+import CoinbaseProvider from "./components/CoinbaseProvider";
+import { Grid } from "@material-ui/core";
 
 const App: React.FC = () => (
-    <>
-      <MainNavbar />
-      <Main />
-    </>
-  );
-
+  <CoinbaseProvider>
+    <Main />
+  </CoinbaseProvider>
+);
 
 export default App;

@@ -9,6 +9,7 @@ import CurrentValue from "./current_value_context";
 import useSound from "use-sound";
 import success from "./notifications/success.mp3";
 import fail from "./notifications/fail.mp3";
+import { Grid } from "@material-ui/core";
 
 const wrapperLeft = {
   marginTop: "40px",
@@ -40,32 +41,14 @@ const AmountDisplay: React.FC = () => {
   }, [currAmt]);
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexFlow: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        <Container maxWidth="lg">
-          <div
-            id="about"
-            style={{
-              display: "flex",
-              flexFlow: "row",
-              flexWrap: "wrap",
-            }}
-          >
-            <div style={wrapperLeft}>
-              <DataInput setAmount={setAmount} />
-              <DataDisplay amount={amount} />
-            </div>
-            <ImageInfo />
-          </div>
-        </Container>
-      </div>
-    </div>
+    <Grid container direction="column">
+      <Grid item>
+        <DataInput setAmount={setAmount} />
+      </Grid>
+      <Grid item>
+        <DataDisplay amount={amount} />
+      </Grid>
+    </Grid>
   );
 };
 
